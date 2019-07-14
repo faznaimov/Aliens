@@ -22,6 +22,7 @@ h4 {
 }
 p {
     font-size: 14pt;
+    padding: 1pc;
 }
 .navbar-brand {
     background-color: rgb(18, 176, 182);
@@ -39,4 +40,30 @@ p {
 
 .white{
     background:white;
+}
+.footer {
+    position: relative;
+    bottom: 0;
+    margin-bottom: -150px;
+    left:0;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    text-align: center;
+}
+.home_footer {
+    position: relative;
+    bottom: 0;
+    left:0;
+    margin-top: 5pc;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    text-align: center;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
 }
