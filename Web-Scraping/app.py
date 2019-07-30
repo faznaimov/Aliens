@@ -15,8 +15,11 @@ def home():
 
     # Find one record of data from the mongo database
     data = mongo.db.collection.find_one()
-
+    if data is None:
     # Return template and data
+        data = {
+            "hemisphere_imgs":[{"title":"", "img_url":""} for i in range(4)]}
+    
     return render_template("index.html", mars_data=data)
 
 
