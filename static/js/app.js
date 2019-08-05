@@ -29,19 +29,28 @@ var button = d3.select("#filter-btn");
 
 // filter the database and display
 button.on("click", function(event) {
+  
   d3.event.preventDefault();
   deleteTbody();
-  var dateInput = d3.select("#datetime").property("value");
   
-  if (dateInput.trim() === "" ) {
-    // display the whole database if the date field has no date
-    var filteredData = tableData;
-  } else {
-    // otherwise, display the filtered dataset  
-    var filteredData = tableData.filter(ufoSighting => 
-      ufoSighting.datetime === dateInput.trim());
+  var filteredData = tableData;
+  var inputId = document.getElementsByClassName("form-control");
+  
+  // iterate through all the input fields
+  for (var i = 0; i < inputId.length; i++) {
+  
+  var idName = inputId[i].id;
+  var field = d3.select("#" + idName).property("value");
+  
+  // treat empty or space-only fields as a search for ALL for that field
+  if (field.trim() !== "") {
+    var filteredData = filteredData.filter(ufoSighting =>
+      // match as case insensitive
+    ufoSighting[idName].toUpperCase().trim() ===
+    field.toUpperCase().trim());
   };
-
+  };
+ 
   // display message if no records found
   if (filteredData.length == 0) {
     d3.select("tbody")
